@@ -83,7 +83,7 @@
           "200": {
             "description": "Successful login",
             "schema": {
-              "$ref": "#/definitions/CustomerProfileVO"
+              "$ref": "#/definitions/CustomerProfile"
             }
           },
           "201": {
@@ -132,7 +132,7 @@
           "200": {
             "description": "user registered successfully",
             "schema": {
-              "$ref": "#/definitions/CustomerProfileVO"
+              "$ref": "#/definitions/CustomerProfile"
             }
           },
           "201": {
@@ -344,7 +344,7 @@
       },
       "title": "AccountSummary"
     },
-    "CustomerProfileVO": {
+    "CustomerProfile": {
       "type": "object",
       "properties": {
         "firstName": {
@@ -357,7 +357,7 @@
           "type": "string"
         }
       },
-      "title": "CustomerProfileVO"
+      "title": "CustomerProfile"
     },
     "LinkAccountRequest": {
       "type": "object",
