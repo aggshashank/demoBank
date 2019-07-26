@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.citi.yourbank.config.CustomerProfileVO;
 import com.citi.yourbank.vo.AccountSummaryVO;
+import com.citi.yourbank.vo.CustomerProfileVO;
 import com.citi.yourbank.vo.LinkAccountRequestVO;
 import com.citi.yourbank.vo.LoginRequestVO;
 import com.citi.yourbank.vo.OpenAccountRequestVO;
 import com.citi.yourbank.vo.RegisterUserRequestVO;
 import com.citi.yourbank.vo.TransactionVO;
+import com.citi.yourbank.vo.TransferFundRequestVO;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -83,31 +84,50 @@ public class YourBankController {
 
 	@ApiOperation(value = "link account to the user")
 	@PutMapping("/customer/{userId}/account")
-	public ResponseEntity<AccountSummaryVO> linkAccount(
+	public ResponseEntity<List<AccountSummaryVO>> linkAccount(
 			@ApiParam(value = "userId", required = true)
 			@PathVariable(value = "userId") String userId,
 			@ApiParam(value = "linkAccountRequest", required = true)
 			@Valid @RequestBody LinkAccountRequestVO employeeDetails) throws ResourceNotFoundException {
-		AccountSummaryVO accountSummary = new AccountSummaryVO();
 
-		return ResponseEntity.ok(accountSummary);
+		List<AccountSummaryVO> accountSummaryList = new ArrayList<>();
+
+		return ResponseEntity.ok().body(accountSummaryList);
 	}
 
-	@ApiOperation(value="open account",response=AccountSummaryVO.class)
+	@ApiOperation(value="open account")
 	@ApiResponses(value={
 			@ApiResponse(code=200,message="account opened successfully",response=AccountSummaryVO.class),
 			@ApiResponse(code=500,message="Internal Server Error")
 	})
 	@PostMapping(value = "/customer/{userId}/account")
-	public ResponseEntity<AccountSummaryVO> openAccount(
+	public ResponseEntity<List<AccountSummaryVO>> openAccount(
 			@ApiParam(value = "userId", required = true)
 			@PathVariable(value = "userId") String userId,
 			@ApiParam(value = "openAccountRequest", required = true) 
 			@RequestBody OpenAccountRequestVO request){
 
-		AccountSummaryVO accountSummary = new AccountSummaryVO();
-		return ResponseEntity.ok(accountSummary);
+		List<AccountSummaryVO> accountSummaryList = new ArrayList<>();
+
+		return ResponseEntity.ok().body(accountSummaryList);
 	}
+	
+	@ApiResponses(value={
+			@ApiResponse(code=200,message="fund transfered successfully"),
+			@ApiResponse(code=500,message="Internal Server Error")
+	})
+	@PostMapping(value = "/customer/{userId}/fund")
+	public ResponseEntity<List<TransactionVO>> transferFund(
+			@ApiParam(value = "userId", required = true)
+			@PathVariable(value = "userId") String userId,
+			@ApiParam(value = "transferFundRequest", required = true) 
+			@RequestBody TransferFundRequestVO request){
+
+		List<TransactionVO> transactions = new ArrayList<>();
+
+		return ResponseEntity.ok().body(transactions);
+	}
+	
 
 
 }

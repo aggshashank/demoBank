@@ -14,4 +14,6 @@ public class TransactionVO {
 	private double transactionAmount;
 	
 	private String transactionType;
+	
+	private CustomerProfileVO contributor;
 }

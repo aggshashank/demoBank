@@ -11,7 +11,7 @@ public class AccountSummaryVO {
 	
 	private String associationType;
 	
-	private OwnerDetailVO ownerDetail;
+	private CustomerProfileVO ownerDetail;
 	
 	private String accountDescription;
 
