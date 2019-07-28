@@ -1,7 +1,7 @@
 applications:
 - name: your-bank
   memory: 1G
-  path: target/your-bank-0.0.1-SNAPSHOT.jar
+  path: target/YourBank-0.0.1-SNAPSHOT.jar
   buildpacks:
   - https://github.com/cloudfoundry/java-buildpack.git
   stack: cflinuxfs3
