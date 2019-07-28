@@ -3,22 +3,27 @@ package com.citi.yourbank.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
-public class Account {
+@Table(name = "BANK_ACCOUNT")
+@EqualsAndHashCode
+public class BankAccount{
 
 	@Id
 	@GeneratedValue
-	private String id;
+	private int id;
 	
 	private String accountToken;
-	
-	private String displayAccountNumber;
+
+	private String accountDesc;
 	
 	private double balance;
+	 
+	private double accountLimit;
 	
-	private double limit;
 }

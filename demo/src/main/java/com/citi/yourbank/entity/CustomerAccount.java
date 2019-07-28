@@ -25,7 +25,7 @@ public class CustomerAccount {
 	 */
 	private String userId;
 	
-	private String accountId;
+	private int accountId;
 	
 	
 	private String associationType;
