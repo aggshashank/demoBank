@@ -230,7 +230,7 @@
           },
           {
             "in": "body",
-            "name": "employeeDetails",
+            "name": "requestVO",
             "description": "linkAccountRequest",
             "required": true,
             "schema": {
@@ -458,6 +458,9 @@
     "RegisterUserRequest": {
       "type": "object",
       "properties": {
+        "emailId": {
+          "type": "string"
+        },
         "firstName": {
           "type": "string"
         },
