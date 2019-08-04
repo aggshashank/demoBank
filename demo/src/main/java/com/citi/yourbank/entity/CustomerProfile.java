@@ -21,5 +21,6 @@ public class CustomerProfile {
 	private String lastName;
 	private String userId;
 	private String phoneNumber;
+	private String emailId;
 	
 }

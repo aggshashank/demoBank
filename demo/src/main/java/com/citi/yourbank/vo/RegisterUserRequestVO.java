@@ -15,6 +15,9 @@ public class RegisterUserRequestVO {
 	private String password;
 	
 	@NotNull
+	private String emailId;
+	
+	@NotNull
 	private String firstName;
 	
 	@NotNull

@@ -14,5 +14,7 @@ public class AccountSummaryVO {
 	private CustomerProfileVO ownerDetail;
 	
 	private String accountDescription;
+	
+	private String accountTitle;
 
 }

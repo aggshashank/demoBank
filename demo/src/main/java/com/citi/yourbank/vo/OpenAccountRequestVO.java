@@ -14,4 +14,6 @@ public class OpenAccountRequestVO {
 	
 	@NotNull
 	private String accountDescription;
+	
+	private String accountTitle;
 }

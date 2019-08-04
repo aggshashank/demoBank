@@ -89,6 +89,7 @@ public class YourBankController {
 		customerRequest.setFirstName(request.getFirstName());
 		customerRequest.setLastName(request.getLastName());
 		customerRequest.setUserId(request.getUserId());
+		customerRequest.setEmailId(request.getEmailId());
 		customerRequest.setPhoneNumber(request.getPhoneNumber());
 		
 		customerRequest = customerRepository.save(customerRequest);
@@ -131,6 +132,10 @@ public class YourBankController {
 			for(Transaction transaction: transactions) {
 				TransactionVO transactionVO = new TransactionVO();
 				BeanUtils.copyProperties(transaction, transactionVO);
+				CustomerProfile profile = customerRepository.findByUserId(transaction.getUserId());
+				CustomerProfileVO profileVO = new CustomerProfileVO();
+				BeanUtils.copyProperties(profile, profileVO);
+				transactionVO.setContributor(profileVO);
 				transactionVO.setTransactionId(Integer.toString(transaction.getTransactionId()));
 				transactionVOList.add(transactionVO);
 			}
@@ -179,6 +184,7 @@ public class YourBankController {
 		account.setAccountToken(hash.toString());
 		account.setAccountLimit(request.getLimit());
 		account.setAccountDesc(request.getAccountDescription());
+		account.setAccountTitle(request.getAccountTitle());
 		
 		account = accountRepository.save(account);
 		
@@ -218,6 +224,7 @@ public class YourBankController {
 				AccountVO accountVO = new AccountVO();
 				BankAccount account = accountRepository.findById(custAccount.getAccountId());
 				BeanUtils.copyProperties(account, accountVO);
+				accountVO.setId(String.valueOf(account.getId()));
 				AccountSummaryVO accountSummaryVO = new AccountSummaryVO();
 				accountSummaryVO.setAccount(accountVO);
 				accountSummaryVO.setAssociationType(custAccount.getAssociationType());
@@ -228,6 +235,7 @@ public class YourBankController {
 					accountSummaryVO.setOwnerDetail(ownerProfileVO);
 				}
 				accountSummaryVO.setAccountDescription(account.getAccountDesc());
+				accountSummaryVO.setAccountTitle(account.getAccountTitle());
 				accountSummaryList.add(accountSummaryVO);
 			}
 		}

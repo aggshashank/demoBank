@@ -26,4 +26,6 @@ public class BankAccount{
 	 
 	private double accountLimit;
 	
+	private String accountTitle;
+	
 }
